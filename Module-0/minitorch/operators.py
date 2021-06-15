@@ -7,42 +7,49 @@ import math
 def mul(x, y):
     ":math:`f(x, y) = x * y`"
     # TODO: Implement for Task 0.1.
+    return x * y
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
 def id(x):
     ":math:`f(x) = x`"
     # TODO: Implement for Task 0.1.
+    return x
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
 def add(x, y):
     ":math:`f(x, y) = x + y`"
     # TODO: Implement for Task 0.1.
+    return x + y
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
 def neg(x):
     ":math:`f(x) = -x`"
     # TODO: Implement for Task 0.1.
+    return -x
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
 def lt(x, y):
     ":math:`f(x) =` 1.0 if x is less than y else 0.0"
     # TODO: Implement for Task 0.1.
+    return 1.0 if x < y else 0.0
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
 def eq(x, y):
     ":math:`f(x) =` 1.0 if x is equal to y else 0.0"
     # TODO: Implement for Task 0.1.
+    return 1.0 if x == y else 0.0
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
 def max(x, y):
     ":math:`f(x) =` x if x is greater than y else y"
     # TODO: Implement for Task 0.1.
+    return x if x > y else y
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
@@ -60,6 +67,7 @@ def sigmoid(x):
 
     """
     # TODO: Implement for Task 0.1.
+    return 1.0 / (1.0 + exp(-x)) if x >= 0 else exp(x) / (1.0 + exp(x))
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
@@ -69,6 +77,7 @@ def relu(x):
 
     (See `<https://en.wikipedia.org/wiki/Rectifier_(neural_networks)>`_ .)
     """
+    return x if x > 0 else 0
     # TODO: Implement for Task 0.1.
     raise NotImplementedError('Need to implement for Task 0.1')
 
@@ -76,6 +85,7 @@ def relu(x):
 def relu_back(x, y):
     ":math:`f(x) =` y if x is greater than 0 else 0"
     # TODO: Implement for Task 0.1.
+    return y if x > 0 else 0.0
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
@@ -109,7 +119,7 @@ def inv_back(a, b):
 ## Higher-order functions.
 
 
-def map(fn):
+def map(fn, lista):
     """
     Higher-order map.
 
@@ -125,15 +135,19 @@ def map(fn):
         function : a function that takes a list and applies `fn` to each element
     """
     # TODO: Implement for Task 0.3.
+    lista2 = []
+    for i in lista:
+        lista2.append(neg(i))
+    return lista2
     raise NotImplementedError('Need to implement for Task 0.3')
 
 
 def negList(ls):
     "Use :func:`map` and :func:`neg` to negate each element in `ls`"
-    return map(neg)(ls)
+    return map(neg, ls)
 
 
-def zipWith(fn):
+def zipWith(fn, a, b):
     """
     Higher-order zipwith (or map2).
 
@@ -149,13 +163,16 @@ def zipWith(fn):
         applying fn(x, y) one each pair of elements.
 
     """
-    # TODO: Implement for Task 0.3.
+    lista2 = []
+    for i in range(len(a)):
+        lista2.append(fn(a[i], b[i]))
+    return lista2
     raise NotImplementedError('Need to implement for Task 0.3')
 
 
 def addLists(ls1, ls2):
     "Add the elements of `ls1` and `ls2` using :func:`zipWith` and :func:`add`"
-    return zipWith(add)(ls1, ls2)
+    return zipWith(add, ls1, ls2)
 
 
 def reduce(fn, start):
@@ -176,6 +193,16 @@ def reduce(fn, start):
 
     """
     # TODO: Implement for Task 0.3.
+    if (len(start) == 0):
+        return []
+    elif (len(start) == 1):
+        acumulador = start[0]
+        return acumulador
+    else:
+        acumulador = start[0]
+        for i in range(len(start) - 1):
+            acumulador = fn(acumulador, start[i + 1])
+        return acumulador
     raise NotImplementedError('Need to implement for Task 0.3')
 
 
@@ -184,6 +211,7 @@ def sum(ls):
     Sum up a list using :func:`reduce` and :func:`add`.
     """
     # TODO: Implement for Task 0.3.
+    return reduce(add, ls)
     raise NotImplementedError('Need to implement for Task 0.3')
 
 
@@ -192,4 +220,5 @@ def prod(ls):
     Product of a list using :func:`reduce` and :func:`mul`.
     """
     # TODO: Implement for Task 0.3.
+    return reduce(mul, ls)
     raise NotImplementedError('Need to implement for Task 0.3')
