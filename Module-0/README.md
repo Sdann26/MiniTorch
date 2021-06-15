@@ -11,3 +11,7 @@
 ```
 python run_tests.py
 ```
+
+Gráficas del ejercicio 2 mediante Visdom
+
+<Graphics.png>
