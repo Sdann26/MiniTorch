@@ -14,4 +14,4 @@ python run_tests.py
 
 Gráficas del ejercicio 2 mediante Visdom
 
-![Gráfica en Visdom](/Graphics.png)
+![Gráfica en Visdom](https://github.com/Sdann26/MiniTorch/blob/main/Module-0/Graphics.png)
